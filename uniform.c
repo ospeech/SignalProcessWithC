@@ -1,5 +1,5 @@
 #include <stdio.h>
-
+// generate the random double number between a and b
 double uniform(double a, double b, long int *seed){
 	double t;
 	*seed = 2045 * (*seed) + 1;
