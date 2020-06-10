@@ -45,6 +45,7 @@ double gauss(double mean, double sigma, long int *seed){
 	return y;
 }
 
+// generate the mean=beta, variance=beta^2 exponent distribution
 double exponent(double beta,long int *seed){
 	double u, x;
 	u = uniform(0.0, 1.0, seed);
