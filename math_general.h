@@ -23,6 +23,13 @@ double uniform(double a, double b, long int *seed){
 	return t;
 }
 
+/* Algorithm Description:
+suppose r_1,r_2 ... is according to uniform distribution (0,1).
+E(r_i) = 1/2, D(r_i) = 1/12. Acoording to Central Limit Theorems，
+x = sqrt(12/n) * (Sigma(r_i) - n/2) closed to N(0,1) while n is so bigger.
+normally, n=12, and x = Sigma(r_i) - 6,
+y = mean + sigma * x and y closed to N(mean, sigma^2).
+*/
 // generate the random double number regarding Gaussian distribution N(u,o^2)
 double gauss(double mean, double sigma, long int *seed){
 	int i; double x, y;
