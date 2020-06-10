@@ -19,6 +19,7 @@ double uniform(double a, double b, long int *seed){
 	*seed = *seed - (*seed/1048576) * 1048576;
 	t = (*seed)/1048576.0;
 	t = a + (b-a) * t;
+	
 	return t;
 }
 
@@ -37,7 +38,6 @@ double gauss(double mean, double sigma, long int *seed){
 	for(x=0, i=0; i<12; i++){
 		x += uniform(0.0, 1.0, seed);
 	}
-
 	x = x - 6.0;
 	y = mean + x * sigma;
 	
