@@ -1,5 +1,6 @@
 #ifndef MATH_GENERAL_H_
 #define MATH_GENERAL_H_
+#include <math.h>
 
 /* Algorithm Description:
  * the pdf of uniform distribution is:
@@ -42,6 +43,14 @@ double gauss(double mean, double sigma, long int *seed){
 	y = mean + x * sigma;
 	
 	return y;
+}
+
+double exponent(double beta,long int *seed){
+	double u, x;
+	u = uniform(0.0, 1.0, seed);
+	x = -beta * log(u);
+
+	return x;
 }
 
 #endif
