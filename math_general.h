@@ -121,4 +121,15 @@ int bernoulli(double p, long int *seed){
 	return x;
 }
 
+// generate bernoulli-gauss distribution
+double bern_gauss(double p, double mean, double sigma, long int *seed){
+	double u, x;
+	u = uniform(0.0, 1.0, seed);
+	if(u <= p)
+		x = gauss(mean, sigma, seed);
+	else
+		x = 0.0;
+	return x;
+}
+
 #endif
