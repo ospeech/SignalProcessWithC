@@ -54,4 +54,16 @@ double exponent(double beta,long int *seed){
 	return x;
 }
 
+// generate the laplace distribution
+double laplace(double beta, long int *seed){
+	double u1, u2, x;
+	u1 = uniform(0, 1, seed);
+	u2 = uniform(0, 1, seed);
+	if(u1 <= 0.5)
+		x = -beta * log(1.0-u2);
+	else
+		x = beta * log(u2);
+
+	return x;
+}
 #endif
