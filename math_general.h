@@ -66,4 +66,21 @@ double laplace(double beta, long int *seed){
 
 	return x;
 }
+
+// generate the rayleigh distribution
+double rayleigh(double sigma, long int *seed){
+	double u, x;
+	u = uniform(0, 1, seed);
+	x = -2.0 * log(u);
+	x = sigma * sqrt(x);
+	return x;
+}
+
+// generate the lognorm distribution
+double lognorm(double u, double sigma, long int *seed){
+	double x, y;
+	y = gauss(u, sigma, seed);
+	x = exp(y);
+	return x;
+}
 #endif
