@@ -112,4 +112,13 @@ double erlang(int m, double beta, long int *seed){
 	return x;
 }
 
+// generate the bernoulli distribution
+int bernoulli(double p, long int *seed){
+	int x;
+	double u;
+	u = uniform(0.0, 1.0, seed);
+	x = (u <= p)? 1 : 0;
+	return x;
+}
+
 #endif
