@@ -83,4 +83,13 @@ double lognorm(double u, double sigma, long int *seed){
 	x = exp(y);
 	return x;
 }
+
+// generate the cauchy distribution
+double cauchy(double a, double b, long int *seed){
+	double u, x;
+	u = uniform(0.0, 1.0, seed);
+	x = a - b/tan(3.1415926*u);
+	return x;
+}
+
 #endif
