@@ -92,4 +92,24 @@ double cauchy(double a, double b, long int *seed){
 	return x;
 }
 
+// generate the weibull distribution
+double weibull(double a, double b, long int *seed){
+	double u,x;
+	u = uniform(0.0, 1.0, seed);
+	u = -log(u);
+	x = b * pow(u, 1.0/a);
+	return x;
+}
+
+// generate the erlang distribution
+double erlang(int m, double beta, long int *seed){
+	int i;
+	double u, x;
+		
+	for (u=1.0,i=0; i<m; i++)
+		u *= uniform(0.0, 1.0, seed);
+	x = -beta * log(u);
+	return x;
+}
+
 #endif
