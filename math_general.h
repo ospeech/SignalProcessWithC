@@ -140,4 +140,20 @@ int binomial(int n, double p, long int *seed){
 	return x;
 }
 
+// generate poisson distribution
+int poisson(double lambda, long int *seed){
+	int i,x;
+	double a,b,u;
+	a = exp(-lambda);
+	i = 0;
+	b = 1.0;
+	do{
+		u = uniform(0.0, 1.0, seed);
+		b *= u;
+		i++;
+	}while(b >= a);
+	x = i - 1;
+	return x;
+}
+
 #endif
