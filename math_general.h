@@ -156,4 +156,49 @@ int poisson(double lambda, long int *seed){
 	return x;
 }
 
+// generate Auto Regressive Moving Average distribution
+void arma(double a[],double b[], int p, int q, double mean, double sigma, long *seed,double x[],int n){
+	int i, k, m;
+	double s, *w;
+	w = malloc(n * sizeof(double));
+	for (k=0; k < n; k++){
+		w[k] = gauss(mean, sigma, seed);
+	}
+
+	x[0] = b[0] * w[0];
+	for(k=1; k<=p; k++){
+		s = 0.0;
+		for(i=1; i<=k; i++){
+			s += a[i] * x[k-i];
+		}
+		s = b[0] * w[k] - s;
+		if (q == 0){
+			x[k] = s;
+			continue;
+		}
+		m = (k>q) ? q : k;
+		for(i=1; i<=m; i++){
+			s += b[i] * w[k-i];
+		}
+		x[k] = s;
+	}
+
+	for(k=(p+1); k<n; k++){
+		s = 0.0;
+		for(i=1; i<=p; i++){
+			s += a[i] * x[k-i];
+		}
+		s = b[0] * w[k] - s;
+		if( q == 0){
+			x[k] = s;
+			continue;
+		}
+		for(i=1; i<=q; i++){
+			s += b[i] * w[k-i];
+		}
+		x[k] = s;
+	}
+	free(w);
+}
+
 #endif
