@@ -132,4 +132,12 @@ double bern_gauss(double p, double mean, double sigma, long int *seed){
 	return x;
 }
 
+// generate binomial distribution
+int binomial(int n, double p, long int *seed){
+	int i; double x;
+	for(x=0.0, i=0; i<n; i++)
+		x += bernoulli(p,seed);
+	return x;
+}
+
 #endif
